@@ -21,7 +21,6 @@ function App() {
           <Navbar.Brand onClick={() => { navigate('/')}}>Bijiou</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={() => { navigate('/Shop')}}>Shop</Nav.Link>
-            <Nav.Link onClick={() => { navigate('/Detail')}}>Detail</Nav.Link>
             <Nav.Link onClick={() => { navigate('/Bag')}}>Bag</Nav.Link>
           </Nav>
         </Container>
@@ -69,11 +68,12 @@ function About() {
 }
 
 function Card(props) {
+  let navigate = useNavigate();
   const imageUrl = `${process.env.PUBLIC_URL}/${props.i+1}.png`;
 
   return (
     <div>
-      <img src={imageUrl} width="80%" />
+      <img src={imageUrl} width="80%" onClick={() => { navigate(`/detail/${props.i+1}`)}}/>
       <h4>{props.necklaces.title}</h4>
       <p>{props.necklaces.price}</p>
     </div>

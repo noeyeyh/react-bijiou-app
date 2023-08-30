@@ -7,20 +7,19 @@ import {useDispatch} from "react-redux";
     
 
 function Detail(props) {
-
+    
 
     let {id} = useParams();
     let 찾은상품 = props.necklaces.find(x => x.id == id);
     let [alert, setAlert] = useState(true)
     let [탭, 탭변경] = useState(0)
     let dispatch = useDispatch()
-    const imageUrl = `${process.env.PUBLIC_URL}/${props.i+1}.png`;
-
+    
     return (
         <div className="container">
             <div className="row mb-5">
                 <div className="col-md-6">
-                    <img src={imageUrl} width="100%" />
+                    <img src={`/${id}.png`} width="100%" />
                 </div>
                 <div className="col-md-6">
                     <h4 className="pt-5">{찾은상품.title}</h4>
@@ -32,6 +31,11 @@ function Detail(props) {
             </div>
         </div> 
     )
-}
+} 
 
-export default Detail;
+
+
+
+
+
+    export default Detail;
