@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Navbar, Container, Nav} from 'react-bootstrap';
-import './App.css';
+import './Styles/App.css';
 import bg from "./images/bg3.JPG";
 import data from './data.js';
 import {  Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
@@ -59,13 +59,6 @@ function App() {
   );
 }
 
-function About() {
-  return(
-    <div>
-      <h4>회사정보</h4>
-    </div>
-  )
-}
 
 function Card(props) {
   let navigate = useNavigate();
@@ -79,5 +72,6 @@ function Card(props) {
     </div>
   );
 }
+
 
 export default App;

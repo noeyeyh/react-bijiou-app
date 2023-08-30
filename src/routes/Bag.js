@@ -12,8 +12,7 @@ function Bag() {
     return(
         <div>
 
-            <h6>{state.user.name} {state.user.age}의 장바구니</h6>
-            <button onClick={() => {dispatch(increase())}}>버튼</button>
+            <h6>{state.user.name}의 장바구니</h6>
             
             <Table>
                 <thead>
@@ -32,8 +31,7 @@ function Bag() {
                                 <td>{state.Bag[i].name}</td>
                                 <td>{state.Bag[i].count}</td>
                                 <td>
-                                    <button onClick={() => {
-                                        dispatch(changeName());
+                                    <button type="button" class="btn btn-outline-dark" onClick={() => {
                                         dispatch(addCount(state.Bag[i].id))      
                                     }}>+</button>
                                 </td>

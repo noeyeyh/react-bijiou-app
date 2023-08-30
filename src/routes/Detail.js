@@ -22,20 +22,15 @@ function Detail(props) {
                     <img src={`/${id}.png`} width="100%" />
                 </div>
                 <div className="col-md-6">
-                    <h4 className="pt-5">{찾은상품.title}</h4>
+                    <h4 className="pt-5 ">{찾은상품.title}</h4>
                     <p>{찾은상품.price}</p>
-                    <button className="btn btn-danger" onClick= {() => {
-                        dispatch(addItem({id: 2, name: 'Retro Necklace', count: 1}))
+                    <button className="btn btn-outline-dark" onClick= {() => {
+                        dispatch(addItem({id: id, name: props.necklaces[id].title, count: 1}))
                     }}>주문하기</button> 
                 </div>
             </div>
         </div> 
     )
-} 
+}
 
-
-
-
-
-
-    export default Detail;
+export default Detail;
