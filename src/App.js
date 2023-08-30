@@ -1,23 +1,81 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import { Navbar, Container, Nav} from 'react-bootstrap';
 import './App.css';
+import bg from "./images/bg3.JPG";
+import data from './data.js';
+import {  Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
+import Detail from './routes/Detail.js';
+import Bag from './routes/Bag.js';
 
 function App() {
+
+  let [necklaces] = useState(data);
+  let navigate = useNavigate();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+
+      <Navbar bg="light" variant="light">
+        <Container>
+          <Navbar.Brand onClick={() => { navigate('/')}}>Bijiou</Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link onClick={() => { navigate('/Shop')}}>Shop</Nav.Link>
+            <Nav.Link onClick={() => { navigate('/Detail')}}>Detail</Nav.Link>
+            <Nav.Link onClick={() => { navigate('/Bag')}}>Bag</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
+
+     
+      <Routes>
+        <Route path="/" element={<div className="main-bg" style={{backgroundImage : 'url(' + bg + ')'}}></div>} />;
+        <Route path="/shop" element={
+          <>
+          <div className="container">
+            <div className="row">
+            {
+              necklaces.map((a, i) => {
+                return (
+                  <div className="col-md-4">
+                  <Card necklaces={necklaces[i]} i={i}></Card>
+                  </div>
+                )
+              })
+            }
+            </div>
+          </div>
+          </>
+        } />
+
+        
+        <Route path="/detail/:id" element={<Detail necklaces={necklaces}/>} />
+        <Route path="/Bag" element={<Bag />} />
+      
+      </Routes>
+     
+
+
+    </div>
+  );
+}
+
+function About() {
+  return(
+    <div>
+      <h4>회사정보</h4>
+    </div>
+  )
+}
+
+function Card(props) {
+  const imageUrl = `${process.env.PUBLIC_URL}/${props.i+1}.png`;
+
+  return (
+    <div>
+      <img src={imageUrl} width="80%" />
+      <h4>{props.necklaces.title}</h4>
+      <p>{props.necklaces.price}</p>
     </div>
   );
 }
