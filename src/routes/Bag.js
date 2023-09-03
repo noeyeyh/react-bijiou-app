@@ -1,18 +1,19 @@
 import {Table} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import {changeName, increase} from "./../store/userSlice.js";
-import {addCount} from './../store.js';
-
+import {addCount, clearBag} from './../store.js';
 
 function Bag() {
 
     let state = useSelector((state)=> state)
     let dispatch = useDispatch();
 
+
+    const handleRemoveClick = () => {
+        dispatch(clearBag()); // 장바구니 비우기 액션을 dispatch
+    };
+
     return(
         <div>
-
-            <h6>{state.user.name}의 장바구니</h6>
             
             <Table>
                 <thead>
@@ -40,6 +41,7 @@ function Bag() {
                     }
                 </tbody>
             </Table>
+            <button type="button" class="btn btn-outline-dark" onClick={handleRemoveClick}>Delete All</button>
         </div>
     )
 }

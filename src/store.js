@@ -5,8 +5,7 @@ import user from './store/userSlice.js';
 let Bag = createSlice({
     name: 'Bag',
     initialState : [
-        {id: 1, name: 'Ocean Heart Necklace', count: 2},
-        {id: 2, name: 'Retro Necklace', count: 1},
+        
     ],
     reducers : {
         addCount(state, action){
@@ -15,11 +14,14 @@ let Bag = createSlice({
         },
         addItem(state, action) {
             state.push(action.payload)
+        },
+        clearBag(state) {
+            state.length = 0; // 장바구니 비우기
         }
     }
 })
 
-export let {addCount, addItem} = Bag.actions
+export let {addCount, addItem, clearBag} = Bag.actions
 
 export default configureStore({
   reducer: {
