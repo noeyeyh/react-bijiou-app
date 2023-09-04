@@ -23,7 +23,7 @@ function Detail(props) {
                     <h4 className="pt-5">{찾은상품.title}</h4>
                     <p>{찾은상품.price}</p>
                     <button className="btn btn-outline-dark" onClick= {() => {
-                        dispatch(addItem({id: id, name: props.necklaces[id].title, count: 1}))
+                        dispatch(addItem({id: id, name: props.necklaces[id-1].title, count: 1}))
                     }}>구매하기</button> 
                 </div>
             </div>
