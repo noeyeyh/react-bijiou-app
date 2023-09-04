@@ -3,7 +3,7 @@ import { Navbar, Container, Nav} from 'react-bootstrap';
 import './Styles/App.css';
 import bg from "./images/bg3.JPG";
 import data from './data.js';
-import {  Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
+import {  Routes, Route, useNavigate } from 'react-router-dom';
 import Detail from './routes/Detail.js';
 import Bag from './routes/Bag.js';
 
@@ -36,7 +36,7 @@ function App() {
             {
               necklaces.map((a, i) => {
                 return (
-                  <div className="col-md-4">
+                  <div key={a.id} className="col-md-4">
                   <Card necklaces={necklaces[i]} i={i}></Card>
                   </div>
                 )
@@ -66,7 +66,7 @@ function Card(props) {
 
   return (
     <div>
-      <img src={imageUrl} width="80%" onClick={() => { navigate(`/detail/${props.i+1}`)}}/>
+      <img src={imageUrl} alt="" width="80%" onClick={() => { navigate(`/detail/${props.i+1}`)}}/>
       <h4>{props.necklaces.title}</h4>
       <p>{props.necklaces.price}</p>
     </div>
